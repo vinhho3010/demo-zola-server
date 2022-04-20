@@ -7,6 +7,11 @@ public class DatabaseConnection {
 
     private static DatabaseConnection instance;
     private Connection connection;
+    private String server;
+    private String port;
+    private String database;
+    private String userName;
+    private String password;
 
     public static DatabaseConnection getInstance() {
         if (instance == null) {
@@ -16,15 +21,15 @@ public class DatabaseConnection {
     }
 
     private DatabaseConnection() {
-
+      server = "localhost";
+      port = "3306";
+      database = "chat_application";
+      userName = "root1";
+      password = "123";
     }
 
     public void connectToDatabase() throws SQLException {
-        String server = "localhost";
-        String port = "3306";
-        String database = "chat_application";
-        String userName = "root1";
-        String password = "123";
+      
         connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + server + ":" + port + "/" + database, userName, password);
     }
 
